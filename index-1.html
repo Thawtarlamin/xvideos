@@ -1,0 +1,28 @@
+
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>My JSon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
+    <meta name="description" content="Blank HTML file for you to create something.">
+    <style>
+      body { max-width: 800px; width: 100%; margin: 1em auto; font-size: 2em; }
+    </style>
+  </head>
+  <body>
+    <main></main>
+  </body>
+  <script>
+    const url = "https://docs.google.com/spreadsheets/d/12lY1eAcCYrNJWafF7FFMmUJp6NeftxlVtwj3qa8CEPM/export?format=csv";
+    const main = document.querySelector("main");
+    fetch(url).then(result=>result.text()).then(function(csvtext){
+      return csv().fromString(csvtext);
+    }).then(function(csv){
+      main.innerHTML = "<code>" + JSON.stringify(csv) + "</code>";
+    });
+  // put your code here.
+  </script>
+</html>
